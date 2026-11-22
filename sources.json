@@ -1,6 +1,7 @@
 {
   "sources": [
     { "name": "kargtx-bmw102", "repo": "kargtx/MGU-BMW102", "branch": "main" },
-    { "name": "sprnv4-mgu-apps", "repo": "SPRNV4/mgu-apps", "branch": "main" }
+    { "name": "sprnv4-mgu-apps", "repo": "SPRNV4/mgu-apps", "branch": "main" },
+    { "name": "pinguinooo-idrive7-apps", "repo": "pinguinooo/idrive7-apps", "branch": "main" }
   ]
 }

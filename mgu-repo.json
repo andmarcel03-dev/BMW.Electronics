@@ -98,6 +98,72 @@
       "mguHmi": [
         "ID7"
       ]
+    },
+    {
+      "id": "adam_mtrack",
+      "kind": "app",
+      "path": "vendor/pinguinooo-idrive7-apps/apps/adam_mtrack",
+      "title": "M Track Cluster",
+      "description": "An M Track style cover on the instrument cluster in Sport+: bar tachs to 7,000 rpm, gear and mph, side panels, shift-light slats. Off until you turn it on",
+      "build": {
+        "python": "vendor/pinguinooo-idrive7-apps/kit/tools/build.py",
+        "args": [
+          "{id}"
+        ],
+        "sdk": "vendor/pinguinooo-idrive7-apps/oap-sdk",
+        "output": "vendor/pinguinooo-idrive7-apps/dist/{id}@{version}.tgz"
+      },
+      "requires": {
+        "idrive7-renderd": "2.1.7",
+        "mgu-inputgate": "1.0.0"
+      },
+      "mguHmi": [
+        "ID7"
+      ]
+    },
+    {
+      "id": "adam_shiftlights",
+      "kind": "app",
+      "path": "vendor/pinguinooo-idrive7-apps/apps/adam_shiftlights",
+      "title": "Shift Lights",
+      "description": "RPM shift lights on the instrument cluster and HUD, with per-drive-mode thresholds and a cold-engine limit",
+      "build": {
+        "python": "vendor/pinguinooo-idrive7-apps/kit/tools/build.py",
+        "args": [
+          "{id}"
+        ],
+        "sdk": "vendor/pinguinooo-idrive7-apps/oap-sdk",
+        "output": "vendor/pinguinooo-idrive7-apps/dist/{id}@{version}.tgz"
+      },
+      "requires": {
+        "idrive7-renderd": "2.1.7",
+        "mgu-inputgate": "1.0.0"
+      },
+      "mguHmi": [
+        "ID7"
+      ]
+    },
+    {
+      "id": "adam_vitals",
+      "kind": "app",
+      "path": "vendor/pinguinooo-idrive7-apps/apps/adam_vitals",
+      "title": "Engine Vitals",
+      "description": "Boost, power, torque, gear, oil, coolant and transmission temperatures, with a warm-up guide and turbo cool-down",
+      "build": {
+        "python": "vendor/pinguinooo-idrive7-apps/kit/tools/build.py",
+        "args": [
+          "{id}"
+        ],
+        "sdk": "vendor/pinguinooo-idrive7-apps/oap-sdk",
+        "output": "vendor/pinguinooo-idrive7-apps/dist/{id}@{version}.tgz"
+      },
+      "requires": {
+        "idrive7-renderd": "2.1.7",
+        "mgu-inputgate": "1.0.0"
+      },
+      "mguHmi": [
+        "ID7"
+      ]
     }
   ]
 }
