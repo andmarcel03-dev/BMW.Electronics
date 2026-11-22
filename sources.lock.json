@@ -1,0 +1,12 @@
+{
+  "kargtx-bmw102": {
+    "repo": "kargtx/MGU-BMW102",
+    "branch": "main",
+    "commit": "21f728145fba01da57f0ed3fb45540139180b278"
+  },
+  "sprnv4-mgu-apps": {
+    "repo": "SPRNV4/mgu-apps",
+    "branch": "main",
+    "commit": "6c982b2dfcbde3d40d6f0700d8cf4dfa4ad434fc"
+  }
+}
