@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "components": [
+    {
+      "id": "bmw102-xdrive",
+      "kind": "tool",
+      "path": "vendor/kargtx-bmw102/engine",
+      "title": "G-xDrive · движок",
+      "description": "Root-сервис МГУ: шлёт в раздатку (VTG 0x29) команду отключения полного привода по HSFZ. Ставится вместе с плиткой.",
+      "requires": {
+        "mgu-python": "1.0.2"
+      },
+      "uninstallable": true,
+      "mguHmi": [
+        "ID7",
+        "ID8"
+      ]
+    },
+    {
+      "id": "bmw102_xdrive",
+      "kind": "app",
+      "path": "vendor/kargtx-bmw102/app",
+      "build": "unit",
+      "title": "BMW102 · Отключение xDrive",
+      "description": "Плитка в меню: отключает полный привод (100% задний) на G-кузове до следующего цикла зажигания. Через диагностику самой МГУ (TASU), путь DSC или VIP выбирается по блоку.",
+      "requires": {
+        "bmw102-xdrive": "0.1.1"
+      },
+      "uninstallable": true,
+      "mguHmi": [
+        "ID7",
+        "ID8"
+      ]
+    },
+    {
+      "id": "bmw102_contacts",
+      "kind": "app",
+      "path": "vendor/kargtx-bmw102/contacts/app",
+      "build": "unit",
+      "title": "BMW102 · Контакты",
+      "description": "Плитка в меню: контакты BMW102 — ремонт и обслуживание (+7 965 925 6666, @BMW102UFA) и техподдержка приложений (Telegram @KARGTX).",
+      "uninstallable": true,
+      "mguHmi": [
+        "ID7",
+        "ID8"
+      ]
+    },
+    {
+      "id": "bmw102_flash",
+      "kind": "app",
+      "path": "vendor/kargtx-bmw102/flash/apps/bmw102_flash",
+      "build": {
+        "python": "vendor/kargtx-bmw102/flash/kit/tools/build.py",
+        "args": [
+          "--language",
+          "ru",
+          "{id}"
+        ],
+        "sdk": "vendor/kargtx-bmw102/flash/oap-sdk",
+        "output": "vendor/kargtx-bmw102/flash/dist/{id}@{version}.tgz",
+        "shared": [
+          "vendor/kargtx-bmw102/flash/kit"
+        ]
+      },
+      "title": "BMW102 · Flash",
+      "description": "Стробоскоп дальним светом и световое шоу — экран как у страницы Strobe в Ambient config (idrive7-apps), в стиле BMW102: полиция, 5 нажатий рычага дальнего за 10 с — старт, одно нажатие — стоп, без ограничения по времени. Нужны GPU renderer и Controller gate из idrive7-apps. Только частная территория.",
+      "uninstallable": true,
+      "mguHmi": [
+        "ID7",
+        "ID8"
+      ]
+    },
+    {
+      "id": "cluster_nav_card",
+      "kind": "app",
+      "path": "vendor/sprnv4-mgu-apps/apps/cluster_nav_card",
+      "title": "Cluster Nav Card",
+      "description": "A turn card over the phone's map in the instrument cluster, in the style of a navigation app: the next turn's arrow, the distance to it, the road and the lanes. Guidance from the head unit's navigation (CarPlay or Android Auto guiding, or BMW's own route), a file another program writes, or a demo drive. Waze isn't supported: it sends the car no guidance. Needs Waze on cluster and the cluster render service (eroobeeroo/idrive-apps)",
+      "build": {
+        "python": "vendor/sprnv4-mgu-apps/kit/tools/build.py",
+        "args": [
+          "{id}"
+        ],
+        "sdk": "vendor/sprnv4-mgu-apps/oap-sdk",
+        "output": "vendor/sprnv4-mgu-apps/dist/{id}@{version}.tgz",
+        "shared": [
+          "vendor/sprnv4-mgu-apps/kit/runtime",
+          "vendor/sprnv4-mgu-apps/kit/platform",
+          "vendor/sprnv4-mgu-apps/kit/tools/build.py",
+          "vendor/sprnv4-mgu-apps/kit/tools/pack_data.py",
+          "vendor/sprnv4-mgu-apps/kit/tools/localize.py",
+          "vendor/sprnv4-mgu-apps/kit/tools/locale-revisions.json",
+          "vendor/sprnv4-mgu-apps/kit/tools/make_icon.js",
+          "vendor/sprnv4-mgu-apps/kit/tools/oapgen",
+          "vendor/sprnv4-mgu-apps/oap-sdk"
+        ]
+      },
+      "mguHmi": [
+        "ID7"
+      ]
+    }
+  ]
+}

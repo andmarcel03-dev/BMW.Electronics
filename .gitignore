@@ -1,0 +1,13 @@
+# BMW SDK files (generated on the head unit, never in the repository)
+oap-sdk/
+reference/
+
+# build output
+dist/
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store
+
+# personal logs from the car
+*nav_card-events*.jsonl
