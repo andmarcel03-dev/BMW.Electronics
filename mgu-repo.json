@@ -98,6 +98,102 @@
       "mguHmi": [
         "ID7"
       ]
+    },
+    {
+      "id": "adam_mtrack",
+      "kind": "app",
+      "path": "vendor/pinguinooo-idrive7-apps/apps/adam_mtrack",
+      "title": "M Track Cluster",
+      "description": "An M Track style cover on the instrument cluster in Sport+: bar tachs to 7,000 rpm, gear and mph, side panels, shift-light slats. Off until you turn it on",
+      "build": {
+        "python": "vendor/pinguinooo-idrive7-apps/kit/tools/build.py",
+        "args": [
+          "{id}"
+        ],
+        "sdk": "vendor/pinguinooo-idrive7-apps/oap-sdk",
+        "output": "vendor/pinguinooo-idrive7-apps/dist/{id}@{version}.tgz"
+      },
+      "requires": {
+        "idrive7-renderd": "2.1.7",
+        "mgu-inputgate": "1.0.0"
+      },
+      "mguHmi": [
+        "ID7"
+      ]
+    },
+    {
+      "id": "adam_shiftlights",
+      "kind": "app",
+      "path": "vendor/pinguinooo-idrive7-apps/apps/adam_shiftlights",
+      "title": "Shift Lights",
+      "description": "RPM shift lights on the instrument cluster and HUD, with per-drive-mode thresholds and a cold-engine limit",
+      "build": {
+        "python": "vendor/pinguinooo-idrive7-apps/kit/tools/build.py",
+        "args": [
+          "{id}"
+        ],
+        "sdk": "vendor/pinguinooo-idrive7-apps/oap-sdk",
+        "output": "vendor/pinguinooo-idrive7-apps/dist/{id}@{version}.tgz"
+      },
+      "requires": {
+        "idrive7-renderd": "2.1.7",
+        "mgu-inputgate": "1.0.0"
+      },
+      "mguHmi": [
+        "ID7"
+      ]
+    },
+    {
+      "id": "adam_vitals",
+      "kind": "app",
+      "path": "vendor/pinguinooo-idrive7-apps/apps/adam_vitals",
+      "title": "Engine Vitals",
+      "description": "Boost, power, torque, gear, oil, coolant and transmission temperatures, with a warm-up guide and turbo cool-down",
+      "build": {
+        "python": "vendor/pinguinooo-idrive7-apps/kit/tools/build.py",
+        "args": [
+          "{id}"
+        ],
+        "sdk": "vendor/pinguinooo-idrive7-apps/oap-sdk",
+        "output": "vendor/pinguinooo-idrive7-apps/dist/{id}@{version}.tgz"
+      },
+      "requires": {
+        "idrive7-renderd": "2.1.7",
+        "mgu-inputgate": "1.0.0"
+      },
+      "mguHmi": [
+        "ID7"
+      ]
+    },
+    {
+      "id": "gear_cluster",
+      "kind": "app",
+      "path": "vendor/sergshamiryan-gear-cluster/apps/gear_cluster",
+      "title": "Gear on Cluster",
+      "description": "Shows the engaged gear (D1-D8, R, N, P) on the instrument cluster",
+      "build": {
+        "python": "vendor/sergshamiryan-gear-cluster/kit/tools/build.py",
+        "args": [
+          "{id}"
+        ],
+        "sdk": "vendor/sergshamiryan-gear-cluster/oap-sdk",
+        "output": "vendor/sergshamiryan-gear-cluster/dist/{id}@{version}.tgz",
+        "shared": [
+          "vendor/sergshamiryan-gear-cluster/kit/runtime",
+          "vendor/sergshamiryan-gear-cluster/kit/platform",
+          "vendor/sergshamiryan-gear-cluster/kit/localization",
+          "vendor/sergshamiryan-gear-cluster/kit/tools/build.py",
+          "vendor/sergshamiryan-gear-cluster/kit/tools/pack_data.py",
+          "vendor/sergshamiryan-gear-cluster/kit/tools/localize.py",
+          "vendor/sergshamiryan-gear-cluster/kit/tools/locale-revisions.json",
+          "vendor/sergshamiryan-gear-cluster/kit/tools/make_icon.js",
+          "vendor/sergshamiryan-gear-cluster/kit/tools/oapgen",
+          "vendor/sergshamiryan-gear-cluster/oap-sdk"
+        ]
+      },
+      "mguHmi": [
+        "ID7"
+      ]
     }
   ]
 }

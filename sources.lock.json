@@ -8,5 +8,15 @@
     "repo": "SPRNV4/mgu-apps",
     "branch": "main",
     "commit": "6c982b2dfcbde3d40d6f0700d8cf4dfa4ad434fc"
+  },
+  "pinguinooo-idrive7-apps": {
+    "repo": "pinguinooo/idrive7-apps",
+    "branch": "main",
+    "commit": "82bea95add762c03d97070d2bd462bfd5fac429c"
+  },
+  "sergshamiryan-gear-cluster": {
+    "repo": "sergshamiryan/mgu-gear-cluster",
+    "branch": "main",
+    "commit": "089f4bb0cb7e09afc210e7d9ec4dcec89f725209"
   }
 }
