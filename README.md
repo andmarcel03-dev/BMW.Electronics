@@ -17,6 +17,7 @@ Sursă MGU Store cu aplicațiile alese de mine, copiate din repo-urile autorilor
 | M Track Cluster | `adam_mtrack` | [pinguinooo/idrive7-apps](https://github.com/pinguinooo/idrive7-apps) | 7 |
 | Shift Lights | `adam_shiftlights` | [pinguinooo/idrive7-apps](https://github.com/pinguinooo/idrive7-apps) | 7 |
 | Engine Vitals | `adam_vitals` | [pinguinooo/idrive7-apps](https://github.com/pinguinooo/idrive7-apps) | 7 |
+| Gear on Cluster | `gear_cluster` | [sergshamiryan/mgu-gear-cluster](https://github.com/sergshamiryan/mgu-gear-cluster) | 7 |
 
 Dependențe externe: `bmw102-xdrive` cere `mgu-python`; BMW102 Flash cere GPU renderer și Controller gate din idrive7-apps; Cluster Nav Card cere Waze on cluster și cluster-render (idrive-apps); aplicațiile `adam_*` cer `idrive7-renderd` și `mgu-inputgate` (idrive7-apps).
 
