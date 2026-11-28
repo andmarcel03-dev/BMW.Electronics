@@ -1,0 +1,53 @@
+RideTube Plus is a modified version of RideTube.
+
+RideTube: Copyright (c) 2026 JustAnotherPU, https://github.com/JustAnotherPU/ridetube, licensed under the GNU
+General Public License, version 3 or (at your option) any later version (src/LICENSE). This version is based on
+upstream commit fbd895390e56c15d42774b4ad6e34e9ad7e3b58a ("README: link the write-up", main), app 0.6.7, service
+jap-ridetube-d 0.5.8.
+
+Modified 2026-11-27 by Adam (github.com/pinguinooo) in a fork, app 0.6.72 and service 0.5.80: Picture while driving
+and Typing while driving settings (on by default; off, the picture and the keyboard only in P at 0 km/h), Read aloud
+(off by default: the service says a video's title through the car's media player), a dark look drawn by the app, and
+a note when the car has no internet. src/README.md, "This fork", lists every change; changed files carry a "Modified
+2026-11-27" line.
+
+src/ is that fork's whole tree at its commit 0b3738f6c8e26b0042bd67bd759998ddf200b214, as `git archive` gives it,
+with one file left out: kit/tools/.font-cache/NotoSansSC.ttf (17.7 MB, the Noto Sans SC font under the SIL Open Font
+License 1.1, a cache nothing in the build reads; it is in upstream's repository at the commit above).
+
+Parts of src/ come from others under their own licences, all listed in src/THIRD_PARTY_LICENSES (for example the
+app kit, MIT, src/kit/LICENSE, and the fonts, OFL and Ubuntu Font Licence). The files in this folder outside src/ (README.md, NOTICE,
+store.json, icon.png, drawn from kit/icons/ridetube_plus.svg) are offered under GPL-3.0-or-later as well.
+
+The two Store tools RideTube Plus installs with it are in the repo's native/ folder:
+
+- native/jap-ridetube-d, the fork's RideTube service 0.5.80 (RideTube's 0.5.8 at upstream fbd8953 with the fork's
+  Read aloud: ytd.js's say command, tts.js, check.sh), GPL-3.0-or-later (its LICENSE and THIRD_PARTY_LICENSES ship in
+  it): every file as src/native/jap-ridetube-d lists it, oapgen.js being src/kit/tools/oapgen/gen.js; its
+  component.json is the tree's with each file's "from" set to its place in the kit.
+  ytdec (sha256 8c42bc7cd6f9b99f3523014bfcb7d50e387c3dc04ec440897a545784daee20c1) and ytdlp.pyz (sha256
+  421315a930d6166ee8f4fb582d0e2d1d20281309f2ef162b6a79c7de0995c88b) are the files of RideTube's published
+  jap-ridetube-d 0.5.7 kit (release "catalog", asset jap-ridetube-d@0.5.7.tgz, sha256
+  67d126522f972ae5c0f3dd9fcc8d69b2efdd93913d83fd9da4440a7ea62ab728), built at upstream
+  6e7209f242104726a9e6ecacb81a37e443c51a3f, whose src/native/ytdec and tools/build_pyz.sh are the same as here.
+  ytdec's complete source, with its build files, is src/native/ytdec (GPL-3.0-or-later; the Intel Media SDK headers
+  in it are MIT). ytdlp.pyz is yt-dlp 2026.10.26's official zipapp, precompiled for Python 3.12 (Unlicense; it carries
+  yt-dlp-ejs, Unlicense AND MIT AND ISC, notices inside), as src/THIRD_PARTY_LICENSES says.
+  tts/ is what src/native/jap-ridetube-d/tools/build_tts.sh builds from two npm registry tarballs it checks by sha512
+  (the same bytes as the fork's own 0.5.80 package): tts/espeak-ng.mjs and tts/espeak-ng.data are eSpeak NG compiled
+  to WebAssembly, @echogarden/espeak-ng-emscripten 0.3.5 (GPL-3.0; its licence ships as tts/COPYING.espeak-ng), with
+  the voice data cut to ten languages and the loader's table of it rewritten to match; its corresponding source is
+  github.com/echogarden-project/espeak-ng-emscripten at ea36b43595facf07f1c5dc487b9f0de3340c1b5e (the npm release's
+  gitHead) and eSpeak NG's (github.com/espeak-ng/espeak-ng). tts/lame.min.js is lamejs 1.2.1 (github.com/zhuker/lamejs
+  at 260ecf8a2cf15b97e65442986c5c9149b0be7764, a JavaScript port of LAME, lame.sourceforge.net; LGPL-3.0), the npm
+  file unchanged and loaded as a file of its own, so it can be replaced; its source is in that npm tarball and
+  repository, its notice ships as tts/LICENSE.lamejs and the LGPL-3.0 text as tts/COPYING.LESSER.
+- native/jap-node22, Node.js 22.23.4: node.xz is xz-packed bin/node of RideTube's jap-node22 22.23.4 kit, which is
+  nodejs.org's unofficial-builds node-v22.23.4-linux-x64-glibc-217 (tar.xz sha256
+  021b9ef3861926d32d0323c24a554c29f26d95895bfc56f5fdc3c2be7d062aa5, in that release's SHASUMS256.txt) with its ELF
+  loader set to /lib/ld-linux-x86-64.so.2 and nothing else changed (sha256
+  8aacb15e7d149fdbfa73f6ec91641dcd1c479eb62dca4a5db9cd8f70bd6df02e). Node.js is MIT; its LICENSE, with the licences
+  of everything built into it (OpenSSL, ICU, V8, libuv and others), ships in the kit. unpack.js and check.sh there
+  are offered under GPL-3.0-or-later as well.
+
+RideTube Plus is unofficial and not affiliated with, endorsed by or sponsored by any video platform.

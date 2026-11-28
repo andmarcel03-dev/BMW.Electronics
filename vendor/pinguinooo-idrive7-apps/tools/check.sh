@@ -30,5 +30,15 @@ for app in apps/*/; do
     echo "$id: cluster_render_client.js matches idrive-apps@793da1e"
   fi
 done
+# an app built by its own kit (apps/<folder>/src: its kit/ and apps/<id>/, a components entry in mgu-repo.json):
+# the kit runtime and app files its build.py ships
+for src in apps/*/src/; do
+  [ -d "${src}kit/runtime" ] || continue
+  label=${src%/}; syntax "${src}"kit/runtime/*.js "${src}"apps/*/*.js
+done
+# the Store tools in native/: the javascript the car runs on its Node 8 (thumb.js, tts.js, tts/ and vendor/ run on jap-node22)
+files=()
+for f in native/*/*.js; do case "$f" in */thumb.js|*/tts.js) ;; *) files+=("$f") ;; esac; done
+if [ ${#files[@]} -gt 0 ]; then label=native; syntax "${files[@]}"; fi
 
 "$NODE" test/run.js

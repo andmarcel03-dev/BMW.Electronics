@@ -100,6 +100,42 @@
       ]
     },
     {
+      "id": "jap_ridetube",
+      "kind": "app",
+      "path": "vendor/pinguinooo-idrive7-apps/apps/ridetube_plus",
+      "manifest": "store.json",
+      "icon": "icon.png",
+      "mguHmi": [
+        "ID7"
+      ],
+      "requires": {
+        "jap-ridetube-d": "0.5.80",
+        "mgu-render": "0.6.11",
+        "mgu-inputgate": "1.0.0"
+      },
+      "build": {
+        "python": "vendor/pinguinooo-idrive7-apps/apps/ridetube_plus/src/kit/tools/build.py",
+        "args": [
+          "{id}"
+        ],
+        "sdk": "vendor/pinguinooo-idrive7-apps/apps/ridetube_plus/src/oap-sdk",
+        "output": "vendor/pinguinooo-idrive7-apps/apps/ridetube_plus/src/dist/{id}@{version}.tgz",
+        "shared": [
+          "vendor/pinguinooo-idrive7-apps/apps/ridetube_plus/src"
+        ]
+      }
+    },
+    {
+      "id": "jap-ridetube-d",
+      "kind": "tool",
+      "path": "vendor/pinguinooo-idrive7-apps/native/jap-ridetube-d"
+    },
+    {
+      "id": "jap-node22",
+      "kind": "tool",
+      "path": "vendor/pinguinooo-idrive7-apps/native/jap-node22"
+    },
+    {
       "id": "adam_mtrack",
       "kind": "app",
       "path": "vendor/pinguinooo-idrive7-apps/apps/adam_mtrack",
@@ -111,7 +147,10 @@
           "{id}"
         ],
         "sdk": "vendor/pinguinooo-idrive7-apps/oap-sdk",
-        "output": "vendor/pinguinooo-idrive7-apps/dist/{id}@{version}.tgz"
+        "output": "vendor/pinguinooo-idrive7-apps/dist/{id}@{version}.tgz",
+        "shared": [
+          "vendor/pinguinooo-idrive7-apps/kit"
+        ]
       },
       "requires": {
         "idrive7-renderd": "2.1.7",
@@ -133,7 +172,10 @@
           "{id}"
         ],
         "sdk": "vendor/pinguinooo-idrive7-apps/oap-sdk",
-        "output": "vendor/pinguinooo-idrive7-apps/dist/{id}@{version}.tgz"
+        "output": "vendor/pinguinooo-idrive7-apps/dist/{id}@{version}.tgz",
+        "shared": [
+          "vendor/pinguinooo-idrive7-apps/kit"
+        ]
       },
       "requires": {
         "idrive7-renderd": "2.1.7",
@@ -155,7 +197,10 @@
           "{id}"
         ],
         "sdk": "vendor/pinguinooo-idrive7-apps/oap-sdk",
-        "output": "vendor/pinguinooo-idrive7-apps/dist/{id}@{version}.tgz"
+        "output": "vendor/pinguinooo-idrive7-apps/dist/{id}@{version}.tgz",
+        "shared": [
+          "vendor/pinguinooo-idrive7-apps/kit"
+        ]
       },
       "requires": {
         "idrive7-renderd": "2.1.7",

@@ -1,0 +1,46 @@
+{
+  "id": "jap-node22",
+  "kind": "tool",
+  "version": "22.23.4",
+  "license": "MIT",
+  "title": "Node.js 22",
+  "description": "Node.js 22 LTS for RideTube Plus's service, the same program as RideTube's jap-node22 22.23.4: nodejs.org's unofficial linux-x64-glibc-217 build (the unit has glibc 2.27), its loader set to /lib/ld-linux-x86-64.so.2, at /var/opt/jap-node22/current/bin/node; BMW's apps keep the system Node 8. Shipped as node.xz and unpacked at install by mgu-python.",
+  "requires": {
+    "mgu-deploy": "0.7.0",
+    "mgu-python": "1.0.2"
+  },
+  "optional": true,
+  "uninstallable": true,
+  "mguHmi": [
+    "ID7"
+  ],
+  "files": [
+    {
+      "path": "node.xz",
+      "mode": "0644"
+    },
+    {
+      "path": "unpack.js",
+      "mode": "0644"
+    },
+    {
+      "path": "check.sh",
+      "mode": "0755"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "0644"
+    }
+  ],
+  "activate": [
+    "node",
+    "unpack.js"
+  ],
+  "check": [
+    "check.sh"
+  ],
+  "units": [],
+  "enable": [],
+  "recmgr": [],
+  "restart": []
+}

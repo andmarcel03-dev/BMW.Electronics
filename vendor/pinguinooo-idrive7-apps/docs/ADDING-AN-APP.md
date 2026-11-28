@@ -66,6 +66,24 @@ app needs different tools, add its folder to `exclude` and give it its own entry
 `mgu-repo.json` (`id`, `kind: "app"`, `path`, `manifest`, `icon`, `mguHmi`, `requires`, and the same `build` as the
 pattern). Checked with the Store's own repo reader.
 
+The pattern's `build.shared` is `["kit"]`: an install downloads the app's folder, the kit and the build script, not
+the whole repo. An app whose build reads anything else in the repo needs it added there (else the Store's first
+build fails and it builds again from the whole repo).
+
+A tool that no other source has can be listed here too: a folder `native/<tool id>` holding its `component.json`
+and every file it installs, prebuilt (a repo-tree tool has no build step), and a `components` entry
+`{ "id": "<tool id>", "kind": "tool", "path": "native/<tool id>" }`. An app that requires it gets it from this repo
+first. RideTube Plus brings its service and Node.js 22 this way (`native/`, `apps/ridetube_plus/README.md`).
+
+## An app that keeps another source's id
+
+When two sources list one id, the Store builds a repo-tree app whose folder is named for its id under another id
+(`<id>2`) so both install. An app that must keep the other source's id lives in a folder named otherwise, listed
+in `exclude`, with its own `components` entry: the Store then lists it as `<id>@<source>`, refused while the
+other source's app is installed and installed under the id itself once that app is removed. RideTube Plus does
+this (`apps/ridetube_plus`, id `jap_ridetube`, the only id RideTube's service answers); `test/ridetube_plus` keeps
+it so.
+
 ## Testing in the emulator
 
 The emulator is upstream's, not in this repo (it needs the app's own build):

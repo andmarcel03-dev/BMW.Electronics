@@ -1,0 +1,6 @@
+{
+  "id": "jap_ridetube",
+  "version": "0.6.72",
+  "title": "RideTube Plus",
+  "description": "Online video for iDrive 7: RideTube 0.6.7 (JustAnotherPU/ridetube, GPL-3.0-or-later) with Picture while driving and Typing while driving settings, on by default (off: the picture and the keyboard only in P at 0 km/h), Read aloud, off by default (a video's first press says its title), a dark look and a no-internet note. Video the driver can see while moving is illegal in many places, and typing is restricted in many places too. Installs on its own: the Store adds its service (jap-ridetube-d 0.5.80, which speaks for Read aloud) and Node.js 22 from this source. If RideTube is installed, remove its app and its service first. Unofficial, not affiliated with any video site."
+}

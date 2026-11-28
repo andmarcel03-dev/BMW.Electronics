@@ -11,6 +11,7 @@ needs no change to `mgu-repo.json`.
 | <img src="apps/adam_shiftlights/icon.png" width="28" alt=""> Shift Lights (`adam_shiftlights`) | RPM shift lights on the instrument cluster and the HUD (the same M slats on both), per-drive-mode thresholds, cold-engine limit, a shift flash the app switches itself, night dim on the car's day / night | [apps/adam_shiftlights](apps/adam_shiftlights/README.md) |
 | <img src="apps/adam_vitals/icon.png" width="28" alt=""> Engine Vitals (`adam_vitals`) | Boost, power, torque, gear, oil, coolant and transmission temperatures with a warm-up takeover until they reach operating temperature (220 / 220 / 160 °F) and a turbo cool-down tab; Thermals, Fuel & ignition, Chassis from M Vitals | [apps/adam_vitals](apps/adam_vitals/README.md) |
 | <img src="apps/adam_mtrack/icon.png" width="28" alt=""> M Track Cluster (`adam_mtrack`) | An M Track style cover over the instrument cluster in Sport+: 0.1.7 Codex-designed M display: bracket tachs to 7,000 rpm, gear over mph, side panels, faceted fuel and oil gauges, shift slats (no badge). Off by default; drops at once on any guard; a Safety tab with every guard, its state, the signals it reads, what the cluster renderer says and which build stage the cover reached, and a parked test pattern (G's Dash's known-good shape first); 4 layers, 2.88 MiB of the renderer's memory; an emulator view to try it without the car | [apps/adam_mtrack](apps/adam_mtrack/README.md) |
+| <img src="apps/ridetube_plus/icon.png" width="28" alt=""> RideTube Plus (`jap_ridetube`) | Online video on the head unit: a fork of RideTube 0.6.7 (GPL-3.0-or-later) with Picture while driving and Typing while driving settings (on by default; off, the picture and the keyboard only in P at 0 km/h), Read aloud (off by default: a video's first press says its title), a dark look and a no-internet note. One install: the Store adds its service (with Read aloud's speech) and Node.js 22 from this repo (`native/`). Not beside RideTube itself (its README, "Beside RideTube") | [apps/ridetube_plus](apps/ridetube_plus/README.md) |
 
 ## Status
 
@@ -48,17 +49,20 @@ syntax check and the tests find it by listing `apps/`. Steps, rules and testing:
 | Path | What |
 |---|---|
 | `apps/<id>/` | one app: `app.json`, `main.js`, `icon.png`, its modules and its README. `apps/_template` is the skeleton the Store ignores |
+| `apps/ridetube_plus/` | RideTube Plus: `src/` is the fork's whole tree, built by its own kit; a `components` entry in `mgu-repo.json`, not the `apps/*` pattern (its README, "How this folder works") |
+| `native/` | Store tools RideTube Plus installs first: its service `jap-ridetube-d` and Node.js 22 `jap-node22`, each a folder with its `component.json` and the files it installs (no build step); `tools/ridetube-plus-sync.js` keeps the service in step with the fork's tree |
 | `test/` | `run.js` (the runner), `apps.test.js` (checks every app folder), `test/<id>/` (one app's own tests) |
 | `tools/check.sh` | the self-check: Node 8 syntax of the kit and every app, then all tests |
 | `tools/car-logs.sh` | read-only evidence from the car (cluster-render's status and log, the apps' logs and settings) into a folder and a .tar.gz; changes nothing on the car |
 | `kit/` | the build kit from upstream idrive7-apps, with one added line in `kit/tools/build.py` (an app.json `"mguAppStartType"` goes to the package's `package.json`) |
-| `mgu-repo.json` | what the Store reads: `apps/*` is discovered, `exclude` lists folders it skips, `requires` the tools every app needs |
+| `mgu-repo.json` | what the Store reads: `apps/*` is discovered, `exclude` lists folders it skips, `requires` the tools every app needs, `build.shared` the files besides its folder an app's build reads (so an install downloads only those); `components` lists an app that needs its own entry, and the tools in `native/` |
 | `docs/` | how to add an app |
 
 ## For developers
 
 - Self-check (Node 8 is what the car runs): `NODE=/path/to/node8 tools/check.sh`. It runs per app: Node 8
-  syntax check of `apps/<id>/*.js`, the pinned cluster-render client where an app has one, then every test.
+  syntax check of `apps/<id>/*.js` (for an app with its own kit, `apps/<folder>/src`, its kit runtime and app
+  files), the pinned cluster-render client where an app has one, then every test.
 - Build like the head unit does: put an `oap-sdk/` (index.js and package.json, made from your own car's donor
   with upstream idrive7-apps' `kit/tools/extract_sdk.js`) at the repo root, then
   `python3 kit/tools/build.py <id>` (no id builds every folder with an `app.json`, `_template` included). The
@@ -68,7 +72,10 @@ syntax check and the tests find it by listing `apps/`. Steps, rules and testing:
 
 ## Licences
 
-The apps' own code is MIT (`LICENSE`). `kit/` is part of
+The apps' own code is MIT (`LICENSE`), except `apps/ridetube_plus`: a modified RideTube, GPL-3.0-or-later
+(`apps/ridetube_plus/NOTICE`, its `src/LICENSE` and `src/THIRD_PARTY_LICENSES`), and the tools it installs in
+`native/`: RideTube's service (GPL-3.0-or-later) and Node.js 22 (MIT, its `LICENSE` beside it), whose sources and
+builds `apps/ridetube_plus/NOTICE` names. `kit/` is part of
 [idrive7-apps](https://github.com/cauliflowermossgrape/idrive7-apps), MIT (`kit/LICENSE`, `kit/NOTICE`), unmodified
 but for one line in `kit/tools/build.py` that copies app.json's `"mguAppStartType"` into `package.json`.
 Third-party files inside an app carry their own notice in that app's folder (for example

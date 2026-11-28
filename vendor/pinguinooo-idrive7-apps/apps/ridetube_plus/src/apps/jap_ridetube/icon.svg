@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" width="140" height="140">
+  <!-- The fork's tile: a plain red play triangle with round corners on transparent. Not YouTube's logo artwork
+       (no red rounded rectangle, no white mark). icon.png is drawn from the same shape with the kit's canvas. -->
+  <polygon points="50,40 104,70 50,100" fill="#ff0000" stroke="#ff0000" stroke-width="18" stroke-linejoin="round"/>
+</svg>
